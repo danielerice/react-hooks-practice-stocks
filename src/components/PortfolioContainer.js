@@ -1,12 +1,25 @@
 import React from "react";
 import Stock from "./Stock";
 
-function PortfolioContainer() {
+function PortfolioContainer({outPortfolioHandler, listOfStocks}) {
   return (
     <div>
       <h2>My Portfolio</h2>
       {
-        //render your portfolio stocks here
+        listOfStocks.map((stock) => {
+          if(stock.inPortfolio === true) {
+            return (
+              <Stock 
+        portfolioHandler={outPortfolioHandler}
+        id={stock.id}
+        ticker={stock.ticker}
+        name={stock.name}
+        type={stock.type}
+        price={stock.price}
+        />)
+          }
+
+        })
       }
     </div>
   );
